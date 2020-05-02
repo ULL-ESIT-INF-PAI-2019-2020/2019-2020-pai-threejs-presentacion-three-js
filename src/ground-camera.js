@@ -57,7 +57,7 @@ function init() {
   let Zmovement = -0.05;
   let rotationspeed = Math.PI / 400;
   render();
-  var light = new THREE.DirectionalLight( 0xffffff );
+  let light = new THREE.DirectionalLight( 0xffffff );
   light.position.set( 0, 1, 1 ).normalize();
   scene.add(light);
 
