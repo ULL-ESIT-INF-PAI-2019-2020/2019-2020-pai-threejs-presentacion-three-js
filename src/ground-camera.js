@@ -90,4 +90,12 @@ function init() {
   }
 
 
+  window.addEventListener('resize', function() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    camera.updateProjectionMatrix();
+
+  });
+
 }

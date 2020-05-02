@@ -15,12 +15,12 @@ function init() {
   let loader = new THREE.TextureLoader()
 
   var materials = [
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubiks.jpg')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubiks.jpg')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubiks.jpg')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubiks.jpg')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubiks.jpg')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubiks.jpg')} )
+      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-yellow.png')} ),
+      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-red.png')} ),
+      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-orange.png')} ),
+      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-blue.png')} ),
+      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-white.png')} ),
+      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-green.png')} )
   ];
 
   let material = new THREE.MeshFaceMaterial(materials);
@@ -44,6 +44,16 @@ function init() {
     renderer.render(scene, camera);
 
   }
+
+  
+  window.addEventListener('resize', function() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    camera.updateProjectionMatrix();
+
+  });
+
 }
 
 

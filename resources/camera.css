@@ -5,6 +5,7 @@
   border: none;
   padding: 20px;
   width: 200px;
+  color:#000;
   text-align: center;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
