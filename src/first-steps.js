@@ -68,8 +68,8 @@ function init() {
     requestAnimationFrame(render);
     // cube.scale.y += 0.005;
     // cube.scale.x += 0.001;
-    // cube.rotation.x += 0.05;
-    // cube.rotation.y += 0.02;
+    //cube.rotation.x += 0.05;
+    //cube.rotation.y += 0.02;
     renderer.render(scene, camera);
 
   }

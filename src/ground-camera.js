@@ -14,7 +14,7 @@ function init() {
   // proportional to the window size, which renders only objects from 0.1 unit
   // away from the camera up to 1000 units away 
   let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000);
-  //let camera = new THREE.OrthographicCamera( window.innerWidth / - 50, window.innerWidth / 50,
+  // let camera = new THREE.OrthographicCamera( window.innerWidth / - 50, window.innerWidth / 50,
   //    window.innerHeight / 50, window.innerHeight / -50, -100, 1000 );
   // We create a renderer object, in this case a webgl one
   let renderer = new THREE.WebGLRenderer();
@@ -89,10 +89,10 @@ function init() {
 
     // movimiento en rombos
  
-    //camera.position.x += Xmovement;
-    //camera.position.z += Zmovement;
+    camera.position.x += Xmovement;
+    camera.position.z += Zmovement;
 
-    //camera.rotation.y += rotationspeed;
+    camera.rotation.y += rotationspeed;
     //controls.update();
     //controls.target.set(0,0,0);
 
