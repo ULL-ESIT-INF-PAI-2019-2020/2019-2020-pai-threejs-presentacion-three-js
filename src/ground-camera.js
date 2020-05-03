@@ -14,7 +14,8 @@ function init() {
   // proportional to the window size, which renders only objects from 0.1 unit
   // away from the camera up to 1000 units away 
   let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000);
-
+  //let camera = new THREE.OrthographicCamera( window.innerWidth / - 50, window.innerWidth / 50,
+  //    window.innerHeight / 50, window.innerHeight / -50, -100, 1000 );
   // We create a renderer object, in this case a webgl one
   let renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -22,6 +23,7 @@ function init() {
 
 
   // We create a controls function, this allows you to rotate, pan and zoom the camera.
+  
   let controls = new THREE.OrbitControls( camera, renderer.domElement );
   
   // Objects creation
@@ -29,14 +31,13 @@ function init() {
   let yAxis = new THREE.BoxGeometry(1, 50, 1);
   let zAxis = new THREE.BoxGeometry(1, 1, 50);
   let ground = new THREE.BoxGeometry(50, 1, 50);
-  //geometryFigure.setSize()
+
   let texture = new THREE.TextureLoader().load('../img/grass.jpg');
   let materialx = new THREE.MeshBasicMaterial({color: RED});
   let materialy = new THREE.MeshBasicMaterial({color: BLUE});
   let materialz = new THREE.MeshBasicMaterial();
   let groundMaterial = new THREE.MeshPhongMaterial({map: texture});
-  //material.bumpMap   = new THREE.TextureLoader().load('../img/face.jpg');   
-  //material.bumpScale = 0.1;
+
 
   let x = new THREE.Mesh(xAxis, materialx);
   let y = new THREE.Mesh(yAxis, materialy);
