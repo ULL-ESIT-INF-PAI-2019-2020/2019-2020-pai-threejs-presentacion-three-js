@@ -3,19 +3,22 @@ window.onload = init;
 
 function init() {
 
+  // initial preparation
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
   let renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
+  
+  // rubiks cube geometry
   let geometryFigure = new THREE.BoxGeometry(4, 4, 4);
   
-  
+  // texture loader
   let loader = new THREE.TextureLoader()
   let texture = loader.load('../img/rubiks.jpg');
   let material = new THREE.MeshBasicMaterial({map: texture});
 
-
+  // multi face materials
   /*
   let materials = [
       new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-yellow.png')} ),
@@ -26,6 +29,7 @@ function init() {
       new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-green.png')} )
   ];
 
+  // MeshFaceMaterial object
   let material = new THREE.MeshFaceMaterial(materials);
   */
 
@@ -43,7 +47,7 @@ function init() {
   render();
 
 
-
+  // animation
   function render() {
     requestAnimationFrame(render);
     cube.rotation.y += 0.005;

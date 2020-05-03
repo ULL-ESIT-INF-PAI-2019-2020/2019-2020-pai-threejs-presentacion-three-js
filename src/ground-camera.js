@@ -7,21 +7,24 @@ window.onload = init;
 
 function init() {
   
-  // Creamos la escena.
+  // We create the scene object, which is like a map of objects to render
   let scene = new THREE.Scene();
 
-  // Creamos una cámara, con un FOV(Field of view) de 75 grados, centrada en el centro,
-  // con una distancia de renderizado solo a partir de 1 unidad de la camara,
-  // con una distancia de renderizado de hasta 1000 unidades de distancia a la camara
+  // We create a camera object, with a 75 degrees field of view, with and aspect ratio
+  // proportional to the window size, which renders only objects from 0.1 unit
+  // away from the camera up to 1000 units away 
   let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000);
 
-  // El Rendered de THREE, es heredado de webgl.
+  // We create a renderer object, in this case a webgl one
   let renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
+
+  // We create a controls function, this allows you to rotate, pan and zoom the camera.
   let controls = new THREE.OrbitControls( camera, renderer.domElement );
   
+  // Objects creation
   let xAxis = new THREE.BoxGeometry(50, 1, 1);
   let yAxis = new THREE.BoxGeometry(1, 50, 1);
   let zAxis = new THREE.BoxGeometry(1, 1, 50);
@@ -43,6 +46,7 @@ function init() {
   scene.add(y);
   scene.add(z);
   scene.add(groundMesh);
+
   groundMesh.position.y = -0.5;
 
 
@@ -50,19 +54,25 @@ function init() {
   camera.position.y = 3;
   camera.position.z = 10;
   camera.lookAt(scene)
+
+  // you have to update the controls when you change camera position
   controls.update();
+  // equivalent to the lookAt function, but works more intuitively
   controls.target.set(0,0,0);
 
   let Xmovement = 0.05;
   let Zmovement = -0.05;
   let rotationspeed = Math.PI / 400;
   render();
+
+  // Light object for objects with light interacting materials
   let light = new THREE.DirectionalLight( 0xffffff );
   light.position.set( 0, 1, 1 ).normalize();
   scene.add(light);
 
   function render() {
     requestAnimationFrame(render);
+    // changing the movement speed to make a trajectory
     if(camera.position.x >= 10) {
       Xmovement = -0.05;
     } else if(camera.position.x <= -10) {
@@ -89,7 +99,7 @@ function init() {
 
   }
 
-
+  // Redimension of the window
   window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     renderer.setSize(window.innerWidth, window.innerHeight);

@@ -12,27 +12,27 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  // creamos la esfera
+  // Creating the sphere
   let sphere = new THREE.SphereGeometry(2, 32, 32);
   let earthTexture = new THREE.TextureLoader().load('../img/earth_texture.png');
   let material = new THREE.MeshPhongMaterial({map: earthTexture});
   let earthMesh = new THREE.Mesh(sphere, material);
 
-  // Añadimos luz
+  // Adding light
   let light = new THREE.DirectionalLight( 0xffffff );
   light.position.set( 0, 1, 1 ).normalize();
   
-  // Posicionamos la tierra y la camara
+  // Positioning the objects
   earthMesh.position.set(0,0,0);
   camera.position.z = 5;
   camera.position.x = 0;
   camera.position.y = 2.9;
 
-  // Añadimos relieve al planeta
+  // Adding relief to the map, it only a rendering change, the mesh stays the same
   material.bumpMap = new THREE.TextureLoader().load('../img/earth_height.png');
   material.bumpScale = 0.05;
 
-  // Añadimos las nubes
+  // Adding clouds, a sphere mesh with transparency using the specular map property
   let cloudSphere = new THREE.SphereGeometry(2, 32 ,32);
   let clouds = new THREE.MeshPhongMaterial({
     map: new THREE.TextureLoader().load('../img/cloud_texture.png'),
@@ -46,32 +46,32 @@ function init() {
   let cloudMesh = new THREE.Mesh(cloudSphere, clouds);
   earthMesh.add(cloudMesh);
 
-  //Control de la cámara
+  // Camera control
   let controls = new THREE.OrbitControls(camera);
   let lightControls = new THREE.OrbitControls(light);
   controls.addEventListener('change', render);
   controls.autorotate = true;
   lightControls.autorotate = true;
 
-  // Añadimos brillo al mar
+  // We add light reflection or "metalness" so the sea
   material.specularMap = new THREE.TextureLoader().load('../img/earth_reflectivity.png');
   material.specular = new THREE.Color('grey');
 
-  // Metemos la esfera y la luz en la escena
+  // We add the earth and the light to the scene
   scene.add(earthMesh);
   scene.add(light);
   camera.lookAt(scene);
   camera.rotation.x = 5.8;
   render();
 
-  //función render
+  // render anidmation funtion
   function render() {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
   }
 
 
-  
+  // resize windows event
   window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -82,6 +82,7 @@ function init() {
 
 }
 
+// button
 function showInstructions() {
   let x = document.getElementById("info").style;
   if (x.display === "none" || x.display === '') {
