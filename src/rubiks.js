@@ -15,23 +15,23 @@ function init() {
   
   // texture loader
   let loader = new THREE.TextureLoader()
-  let texture = loader.load('../img/rubiks.jpg');
-  let material = new THREE.MeshBasicMaterial({map: texture});
+  //let texture = loader.load('../img/rubiks.jpg');
+  //let material = new THREE.MeshBasicMaterial({map: texture});
 
   // multi face materials
-  /*
+  
   let materials = [
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-yellow.png')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-red.png')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-orange.png')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-blue.png')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-white.png')} ),
-      new THREE.MeshBasicMaterial( { map: loader.load('../img/rubik-green.png')} )
+      new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-yellow.png')} ),
+      new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-red.png')} ),
+      new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-orange.png')} ),
+      new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-blue.png')} ),
+      new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-white.png')} ),
+      new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-green.png')} )
   ];
 
   // MeshFaceMaterial object
   let material = new THREE.MeshFaceMaterial(materials);
-  */
+  
 
   let cube = new THREE.Mesh(geometryFigure, material);
   scene.add(cube);
@@ -40,9 +40,9 @@ function init() {
   console.log(camera);
   
   
-  // let light = new THREE.DirectionalLight( 0xffffff );
-  // light.position.set( 0, 0, 10 ).normalize();
-  // scene.add(light);
+  let light = new THREE.DirectionalLight( 0xffffff );
+  light.position.set( 0, 0, 10 ).normalize();
+  scene.add(light);
   
   render();
 

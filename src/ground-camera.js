@@ -17,7 +17,6 @@ function init() {
   // let camera = new THREE.OrthographicCamera( window.innerWidth / - 50, window.innerWidth / 50,
   //    window.innerHeight / 50, window.innerHeight / -50, -100, 1000 );
   // We create a renderer object, in this case a webgl one
-  let renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
@@ -54,7 +53,7 @@ function init() {
   camera.position.x = 0;
   camera.position.y = 3;
   camera.position.z = 10;
-  camera.lookAt(scene)
+  //camera.lookAt(scene)
 
   // you have to update the controls when you change camera position
   controls.update();
@@ -92,9 +91,9 @@ function init() {
     camera.position.x += Xmovement;
     camera.position.z += Zmovement;
 
-    camera.rotation.y += rotationspeed;
-    //controls.update();
-    //controls.target.set(0,0,0);
+    //camera.rotation.y += rotationspeed;
+    controls.update();
+    controls.target.set(0,0,0);
 
     renderer.render(scene, camera);
 
@@ -104,9 +103,7 @@ function init() {
   window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     renderer.setSize(window.innerWidth, window.innerHeight);
-
     camera.updateProjectionMatrix();
-
   });
 
 }
