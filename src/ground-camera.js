@@ -17,6 +17,7 @@ function init() {
   // let camera = new THREE.OrthographicCamera( window.innerWidth / - 50, window.innerWidth / 50,
   //    window.innerHeight / 50, window.innerHeight / -50, -100, 1000 );
   // We create a renderer object, in this case a webgl one
+  let renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
