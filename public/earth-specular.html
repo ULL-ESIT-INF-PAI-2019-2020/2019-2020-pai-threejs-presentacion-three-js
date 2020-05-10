@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset=utf-8>
+    <script src="../src/earth-specular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js" /></script>
+    <script src="https://unpkg.com/three@0.85.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="stylesheet" type="text/css" href="../resources/earth.css">
+    <title>Earth Model</title>
+    <style>
+        body { margin: 0%; }
+        canvas { width: 100%; height: 100% }
+    </style>
+</head>
+<body onload = "init();">
+  <button id = "instrucciones" onclick="showInstructions()">Mostrar instrucciones</button>
+    <div id="info">
+        <p id = "int">Para mover la cámara se hace uso únicamente del ratón. 
+          <br><br>Si quieres rotar la Tierra se tiene que mantener pulsado 
+            el click izquierdo del ratón y luego mueves el ratón.
+            <br><br>Si quieres cambiar la tierra de posición, lo que tienes que 
+            hacer es mantener pulsado el click derecho del ratón y moverlo 
+            <br><br>Para hacer zoom, tienes que usar la rueda del ratón</p>
+    </div>
+<a id="back" href="../index.html">Volver al índice</a>
+<a id="back" href="./earth.html">Volver al índice</a>
+</body>
+</html>

@@ -1,4 +1,4 @@
-"use strict;"
+"use strict"
 const WHITE = "0xffffff";
 function init() {
   let scene = new THREE.Scene();
@@ -23,36 +23,17 @@ function init() {
   camera.position.x = 0;
   camera.position.y = 2.9;
 
+  // Camera control
+  let controls = new THREE.OrbitControls(camera);
+  let lightControls = new THREE.OrbitControls(light);
+  controls.addEventListener('change', render);
+  controls.autorotate = true;
+  lightControls.autorotate = true;
+
   // Adding relief to the map, it only a rendering change, the mesh stays the same
   material.bumpMap = new THREE.TextureLoader().load('../img/earth_height.png');
   material.bumpScale = 0.2;
 
-  // Adding clouds, a sphere mesh with transparency using the specular map property
-  let cloudSphere = new THREE.SphereGeometry(2, 32 ,32);
-  let clouds = new THREE.MeshPhongMaterial({
-    map: new THREE.TextureLoader().load('../img/cloud_texture.png'),
-    side: THREE.DoubleSide,
-    opacity: 0.3,
-    transparent: true,
-    depthWriter: false,
-    specularMap: new THREE.TextureLoader().load('../img/cloud_transparency.png'),
-    specular: new THREE.Color('grey')
-  });
-  let cloudMesh = new THREE.Mesh(cloudSphere, clouds);
-  earthMesh.add(cloudMesh);
-
-  // Camera control
-  let controls = new THREE.OrbitControls(camera);
-  //let lightControls = new THREE.OrbitControls(light);
-  controls.addEventListener('change', render);
-  controls.autorotate = true;
-  //lightControls.autorotate = true;
-
-  // We add light reflection or "metalness" so the sea
-  material.specularMap = new THREE.TextureLoader().load('../img/earth_reflectivity.png');
-  material.specular = new THREE.Color('grey');
-
-  // We add the earth and the light to the scene
   scene.add(earthMesh);
   scene.add(light);
   camera.lookAt(scene);
@@ -74,15 +55,4 @@ function init() {
     camera.updateProjectionMatrix();
 
   });
-
-}
-
-// button
-function showInstructions() {
-  let x = document.getElementById("info").style;
-  if (x.display === "none" || x.display === '') {
-    x.display = "block";
-  } else {
-    x.display = "none";
-  }
 }
