@@ -1,10 +1,5 @@
 "use strict;"
-const INSTRUCTIONS = "Para mover la cámara se hace uso únicamente del ratón. " +
-                     "\n\nSi quieres rotar la Tierra se tiene que mantener pulsado " +
-                     "el click izquierdo del ratón y luego mueves el ratón." +
-                     "\n\nSi quieres cambiar la tierra de posición, lo que tienes que " +
-                     "hacer es mantener pulsado el click derecho del ratón y moverlo " +
-                     "\n\nPara hacer zoom, tienes que usar la rueda del ratón";
+const WHITE = "0xffffff";
 function init() {
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -19,8 +14,8 @@ function init() {
   let earthMesh = new THREE.Mesh(sphere, material);
 
   // Adding light
-  let light = new THREE.DirectionalLight( 0xffffff );
-  light.position.set( 0, 1, 1 ).normalize();
+  let light = new THREE.DirectionalLight(WHITE);
+  light.position.set(0, 1, 1).normalize();
   
   // Positioning the objects
   earthMesh.position.set(0,0,0);
@@ -30,7 +25,7 @@ function init() {
 
   // Adding relief to the map, it only a rendering change, the mesh stays the same
   material.bumpMap = new THREE.TextureLoader().load('../img/earth_height.png');
-  material.bumpScale = 0.05;
+  material.bumpScale = 0.2;
 
   // Adding clouds, a sphere mesh with transparency using the specular map property
   let cloudSphere = new THREE.SphereGeometry(2, 32 ,32);
@@ -48,10 +43,10 @@ function init() {
 
   // Camera control
   let controls = new THREE.OrbitControls(camera);
-  let lightControls = new THREE.OrbitControls(light);
+  //let lightControls = new THREE.OrbitControls(light);
   controls.addEventListener('change', render);
   controls.autorotate = true;
-  lightControls.autorotate = true;
+  //lightControls.autorotate = true;
 
   // We add light reflection or "metalness" so the sea
   material.specularMap = new THREE.TextureLoader().load('../img/earth_reflectivity.png');

@@ -28,9 +28,9 @@ function init() {
   let geometryFigure = new THREE.BoxGeometry(2, 2, 2);
 
   // we create a mesh material to work with
-  let material = new THREE.MeshNormalMaterial();
-  // let material = new THREE.MeshBasicMaterial({color: BLUE});
-  // let material = new THREE.MeshBasicMaterial({color: BLUE, vertexColors: THREE.FaceColors});
+  // let material = new THREE.MeshNormalMaterial();
+  //let material = new THREE.MeshBasicMaterial({color: BLUE});
+  let material = new THREE.MeshBasicMaterial({color: BLUE, vertexColors: THREE.FaceColors});
   
   // we create an object combining the two.
   let cube = new THREE.Mesh(geometryFigure, material);
@@ -42,8 +42,8 @@ function init() {
   //sphere.position.x = 4;
   //scene.add(sphere);
   //cube.geometry.faces[1].color = new THREE.Color(RED);
-  //cube.geometry.faces[0].color = new THREE.Color(RED);
-  //cube.geometry.colorsNeedUpdate = true;
+  cube.geometry.faces[0].color = new THREE.Color(RED);
+  cube.geometry.colorsNeedUpdate = true;
 
   // adding the cube to the  scene
   scene.add(cube);
@@ -66,10 +66,10 @@ function init() {
     // this function works similarly to setInterval, but it works by using 
     // the natural framerate of the browser, normally 60frames per second
     requestAnimationFrame(render);
-    // cube.scale.y += 0.005;
-    // cube.scale.x += 0.001;
-    //cube.rotation.x += 0.05;
-    //cube.rotation.y += 0.02;
+    //cube.scale.y += 0.005;
+    //cube.scale.x += 0.001;
+    cube.rotation.x += 0.05;
+    cube.rotation.y += 0.02;
     renderer.render(scene, camera);
 
   }
