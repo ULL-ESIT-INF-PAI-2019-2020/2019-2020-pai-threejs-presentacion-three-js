@@ -61,9 +61,13 @@ function init() {
   // equivalent to the lookAt function, but works more intuitively
   controls.target.set(0,0,0);
 
+
+
   let Xmovement = 0.05;
   let Zmovement = -0.05;
   let rotationspeed = Math.PI / 400;
+
+  
   render();
 
   // Light object for objects with light interacting materials
@@ -89,12 +93,14 @@ function init() {
 
     // movimiento en rombos
  
-    camera.position.x += Xmovement;
-    camera.position.z += Zmovement;
+    // camera.position.x += Xmovement;
+    // camera.position.z += Zmovement;
 
     //camera.rotation.y += rotationspeed;
-    controls.update();
-    controls.target.set(0,0,0);
+    
+    
+    //controls.update();
+    //controls.target.set(0,0,0);
 
     renderer.render(scene, camera);
 

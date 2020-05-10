@@ -15,11 +15,11 @@ function init() {
   
   // texture loader
   let loader = new THREE.TextureLoader()
-  //let texture = loader.load('../img/rubiks.jpg');
-  //let material = new THREE.MeshBasicMaterial({map: texture});
+  let texture = loader.load('../img/rubiks.jpg');
+  let material = new THREE.MeshBasicMaterial({map: texture});
 
   // multi face materials
-  
+  /*
   let materials = [
       new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-yellow.png')} ),
       new THREE.MeshPhongMaterial( { map: loader.load('../img/rubik-red.png')} ),
@@ -32,7 +32,7 @@ function init() {
   // MeshFaceMaterial object
   let material = new THREE.MeshFaceMaterial(materials);
   
-
+  */
   let cube = new THREE.Mesh(geometryFigure, material);
   scene.add(cube);
   camera.position.z = 10;
