@@ -43,10 +43,10 @@ function init() {
 
   // Camera control
   let controls = new THREE.OrbitControls(camera);
-  //let lightControls = new THREE.OrbitControls(light);
+  let lightControls = new THREE.OrbitControls(light);
   controls.addEventListener('change', render);
   controls.autorotate = true;
-  //lightControls.autorotate = true;
+  lightControls.autorotate = true;
 
   // We add light reflection or "metalness" so the sea
   material.specularMap = new THREE.TextureLoader().load('../img/earth_reflectivity.png');
