@@ -58,6 +58,7 @@ function init() {
   camera.lookAt(scene);
   camera.rotation.x = 5.8;
   render();
+  lightControls.update();
 
   // render anidmation funtion
   function render() {
